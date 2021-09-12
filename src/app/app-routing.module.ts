@@ -6,12 +6,10 @@ import { UsersPageComponent } from './users/users-page/users-page.component';
 
 const routes: Routes = [
   {
-    path: '', component: AdminLayoutComponent, children: [
-      //{path: '', redirectTo: 'admin/login', pathMatch: 'full'},
-      {path: 'login', component: LoginPageComponent},
-      {path: 'users', component: UsersPageComponent},
-      //{path: 'user/create', component: Use}
-    ]
+    path: '', redirectTo: 'admin', pathMatch: 'full'
+  },
+  {
+    path: 'admin', loadChildren: () => import('src/app/admin/admin.module').then(m => m.AdminModule)
   }
 ];
 

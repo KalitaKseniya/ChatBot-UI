@@ -44,7 +44,7 @@ img {
 .container {
   max-width: 1100px;
   margin: auto;
-  overflow: hidden;
+  overflow: auto;
   padding: 0 2rem;
   //height: 100%;
 }
@@ -301,5 +301,5 @@ table th {
   }
 }
 
-html, body { height: 100%; }
+html, body { height: auto; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

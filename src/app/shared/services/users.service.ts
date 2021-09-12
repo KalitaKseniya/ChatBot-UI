@@ -31,5 +31,8 @@ export class UsersService {
     return this.http.delete<void>(`${environment.serverUrl}/api/admin/users/${id}`)
   }
 
+  getUserRoles(id: string): Observable<string[]>{
+    return this.http.get<string[]>(`${environment.serverUrl}/api/admin/users${id}/roles`)
+  }
 
 }

@@ -15,3 +15,8 @@ export interface UserForUpdateDto{
   email: string,
   userName: string
 }
+
+export interface Role{
+  id: string,
+  name: string
+}
