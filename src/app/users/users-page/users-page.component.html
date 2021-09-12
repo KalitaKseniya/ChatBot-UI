@@ -1,1 +1,11 @@
-<p>users-page works!</p>
+<div *ngIf="users.length; else loading">
+  <div *ngFor="let user of users">
+    {{user.id}}
+    {{user.email}}
+    {{user.userName}}
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

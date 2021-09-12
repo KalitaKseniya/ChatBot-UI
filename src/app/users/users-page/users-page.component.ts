@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/shared/interfaces';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-users-page',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersPageComponent implements OnInit {
 
-  constructor() { }
+  users: User[] = []
+  constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
+    this.usersService.getUsers().subscribe((users: User[]) => {
+      this.users = users
+    },
+    (error) => console.log('Error when fetching users', error))
   }
 
 }
