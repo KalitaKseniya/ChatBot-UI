@@ -20,3 +20,8 @@ export interface Role{
   id: string,
   name: string
 }
+
+export interface PasswordChangeDto{
+  oldPassword: string,
+  newPassword: string
+}

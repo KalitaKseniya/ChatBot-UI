@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Role, User, UserForCreationDto, UserForUpdateDto } from '../interfaces';
+import { PasswordChangeDto, Role, User, UserForCreationDto, UserForUpdateDto } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +34,11 @@ export class UsersService {
   getUserRoles(id: string): Observable<Role[]>{
     return this.http.get<Role[]>(`${environment.serverUrl}/api/admin/users/${id}/roles`)
   }
+
+  changePassword(id: string, passwords: PasswordChangeDto): Observable<any>{
+    return this.http.put<any>(`${environment.serverUrl}/api/admin/users/${id}/password-change`, passwords)
+  }
+
+
 
 }
