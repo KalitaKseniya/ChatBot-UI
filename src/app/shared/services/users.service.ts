@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User, UserForCreationDto, UserForUpdateDto } from '../interfaces';
+import { Role, User, UserForCreationDto, UserForUpdateDto } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class UsersService {
   }
 
   getUserById(id: string): Observable<User>{
-    return this.http.get<User>(`${environment.serverUrl}/api/admin/users${id}`)
+    return this.http.get<User>(`${environment.serverUrl}/api/admin/users/${id}`)
   }
 
   updateUser(id: string, userDto: UserForUpdateDto): Observable<User>{
@@ -31,8 +31,8 @@ export class UsersService {
     return this.http.delete<void>(`${environment.serverUrl}/api/admin/users/${id}`)
   }
 
-  getUserRoles(id: string): Observable<string[]>{
-    return this.http.get<string[]>(`${environment.serverUrl}/api/admin/users${id}/roles`)
+  getUserRoles(id: string): Observable<Role[]>{
+    return this.http.get<Role[]>(`${environment.serverUrl}/api/admin/users/${id}/roles`)
   }
 
 }

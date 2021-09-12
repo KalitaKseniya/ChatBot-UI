@@ -8,6 +8,7 @@ import { LoginPageComponent } from '../login-page/login-page.component';
 import { UserCreatePageComponent } from '../users/user-create-page/user-create-page.component';
 import { UsersPageComponent } from '../users/users-page/users-page.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { UserEditPageComponent } from '../users/user-edit-page/user-edit-page/user-edit-page.component';
 
 
 
@@ -15,7 +16,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
   declarations: [
     AdminLayoutComponent,
     LoginPageComponent,
-    //UserEditPageComponent,
+    UserEditPageComponent,
     UserCreatePageComponent,
     UsersPageComponent,
   ],
@@ -31,7 +32,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
           {path: 'login', component: LoginPageComponent},
           {path: 'user/create', component: UserCreatePageComponent},
           {path: 'users', component: UsersPageComponent, pathMatch: 'full'},
-          // {path: 'user/:id/edit', component: UserEditPageComponent},
+           {path: 'user/:id/edit', component: UserEditPageComponent},
         ]
       }
     ]),

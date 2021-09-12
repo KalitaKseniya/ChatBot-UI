@@ -1,3 +1,4 @@
+<div *ngIf="user && form">
 <form
     class="card"
     [formGroup]="form"
@@ -7,7 +8,7 @@
         <button routerLink="/admin/users" class="btn btn-link">
             Back to all users
         </button>
-        <h2>Create a user</h2>
+        <h2>Edit a user</h2>
     </div>
     <div class="form-control">
         <label>Email</label>
@@ -25,24 +26,20 @@
       </div>
   </div>
   <div class="form-control">
-    <label>Password</label>
-    <input class="form-control" type="text" formControlName="password">
-    <div class="validation" *ngIf="form.get('password').touched && form.get('password').invalid">
-        <small *ngIf="form.get('password').errors.required">Password is a required field</small>
-    </div>
-  </div>
-  <div class="form-control">
     <label>Roles</label>
     <ng-multiselect-dropdown
+      [disabled]="true"
       [settings]="dropdownSettings"
       [data]="dropdownList"
       [(ngModel)]="selectedItems"
       [ngModelOptions]="{standalone: true}"
     >
-    </ng-multiselect-dropdown>
-    </div>
+  </ng-multiselect-dropdown>
+
+  </div>
     <button class="btn btn-primary" type="submit" [disabled]="form.invalid || submitted">
-        Save
+        Update
     </button>
 </form>
 
+</div>
