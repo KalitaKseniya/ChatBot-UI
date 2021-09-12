@@ -1,9 +1,37 @@
 <div *ngIf="users.length; else loading">
-  <div *ngFor="let user of users">
-    {{user.id}}
-    {{user.email}}
-    {{user.userName}}
-  </div>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.userName}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <button
+            class="btn btn-dark"
+            [routerLink]="['user', user.id, 'edit']"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-light"
+            [routerLink]="['user', user.id, 'change-password']"
+          >
+            Change password
+          </button>
+          <button
+            class="btn btn-primary"
+            (click)="deleteUser(user.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </table>
 </div>
 
 <ng-template #loading>
