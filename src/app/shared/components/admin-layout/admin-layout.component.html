@@ -1,0 +1,11 @@
+<nav class="navbar bg-primary">
+  <h3>Admin</h3>
+  <!-- <ul> *ngIf="auth.isAuthenticated()"> -->
+    <ul>
+      <li routerLinkActive="active">
+          <a [routerLink]="['users']">Users</a>
+      </li>
+  </ul>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
