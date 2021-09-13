@@ -10,12 +10,6 @@
       <td>{{role.name}}</td>
       <td>
         <button
-          class="btn btn-dark"
-          [routerLink]="['/admin','role', role.id, 'edit']"
-        >
-          Edit
-        </button>
-        <button
           class="btn btn-primary"
           (click)="deleteRole(role.id)"
         >
