@@ -1,0 +1,31 @@
+<div *ngIf="roles.length; else loading">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let role of roles">
+      <td>{{role.id}}</td>
+      <td>{{role.name}}</td>
+      <td>
+        <button
+          class="btn btn-dark"
+          [routerLink]="['/admin','role', role.id, 'edit']"
+        >
+          Edit
+        </button>
+        <button
+          class="btn btn-primary"
+          (click)="deleteRole(role.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #loading>
+<p>Loading...</p>
+</ng-template>

@@ -25,3 +25,7 @@ export interface PasswordChangeDto{
   oldPassword: string,
   newPassword: string
 }
+
+export interface RoleForCreationDto{
+  name: string
+}

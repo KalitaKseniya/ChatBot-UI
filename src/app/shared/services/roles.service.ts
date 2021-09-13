@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Role } from '../interfaces';
+import { Role, RoleForCreationDto } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +15,24 @@ export class RolesService {
     return this.http.get<Role[]>(`${environment.serverUrl}/api/admin/roles`)
   }
 
-  // createUser(userDto: UserForCreationDto): Observable<void>{
-  //   return this.http.post<void>(`${environment.serverUrl}/api/admin/users`, userDto)
-  // }
+  createRole(roleDto: RoleForCreationDto): Observable<void>{
+    return this.http.post<void>(`${environment.serverUrl}/api/admin/roles`, roleDto)
+  }
 
-  // getUserById(id: string): Observable<User>{
-  //   return this.http.get<User>(`${environment.serverUrl}/api/admin/users${id}`)
-  // }
+  getRoleById(id: string): Observable<Role>{
+    return this.http.get<Role>(`${environment.serverUrl}/api/admin/roles/${id}`)
+  }
 
-  // updateUser(id: string, userDto: UserForUpdateDto): Observable<User>{
-  //   return this.http.put<User>(`${environment.serverUrl}/api/admin/users/${id}`, userDto)
-  // }
+  getRoleByName(name: string): Observable<Role>{
+    return this.http.get<Role>(`${environment.serverUrl}/api/admin/roles/name?name=${name}`)
+  }
 
-  // deleteUser(id: string): Observable<void>{
-  //   return this.http.delete<void>(`${environment.serverUrl}/api/admin/users/${id}`)
-  // }
+  updateUserRoles(userId: string, roles: string[]): Observable<void>{
+    return this.http.put<void>(`${environment.serverUrl}/api/admin/roles/${userId}`, roles)
+  }
 
-  // getUserRoles(id: string): Observable<string[]>{
-  //   return this.http.get<string[]>(`${environment.serverUrl}/api/admin/users${id}/roles`)
-  // }
+  deleteRole(id: string): Observable<void>{
+    return this.http.delete<void>(`${environment.serverUrl}/api/admin/roles/${id}`)
+  }
+
 }
