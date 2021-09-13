@@ -20,6 +20,7 @@ import { UserChangePasswordComponent } from '../users/user-change-password/user-
     UserEditPageComponent,
     UserCreatePageComponent,
     UsersPageComponent,
+    UserChangePasswordComponent
   ],
   imports: [
     CommonModule,
@@ -38,8 +39,8 @@ import { UserChangePasswordComponent } from '../users/user-change-password/user-
         ]
       }
     ]),
-     NgMultiSelectDropDownModule.forRoot()
-  ],
+     NgMultiSelectDropDownModule.forRoot(),
+    ],
   exports: [
     RouterModule
   ]

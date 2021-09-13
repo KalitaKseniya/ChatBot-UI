@@ -14,7 +14,7 @@ export class UserChangePasswordComponent implements OnInit {
 
   submitted = false
   form: FormGroup
-  user: User
+  user: User = null
   error = null
 
   constructor(private usersService: UsersService,
@@ -28,7 +28,6 @@ export class UserChangePasswordComponent implements OnInit {
         return this.usersService.getUserById(params['id'])
       })).
       subscribe((user: User) => {
-        console.log(user)
         this.user = user
         this.form = new FormGroup({
           username: new FormControl(user.userName),
@@ -36,12 +35,10 @@ export class UserChangePasswordComponent implements OnInit {
           oldPassword: new FormControl(null, Validators.required),
           newPassword: new FormControl(null, Validators.required)
         })
-        console.log("fval=",this.form.get('email').value)
-      }
-      )
+      })
   }
 
-  submit(){
+  mySubmit(){
     if(this.form.invalid){
       return
     }
