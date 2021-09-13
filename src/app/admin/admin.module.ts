@@ -11,6 +11,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { UserEditPageComponent } from '../users/user-edit-page/user-edit-page/user-edit-page.component';
 import { UserChangePasswordComponent } from '../users/user-change-password/user-change-password.component';
 import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
+import { RoleCreatePageComponent } from '../roles/role-create-page/role-create-page.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
     UsersPageComponent,
     UserChangePasswordComponent,
     RolesPageComponent,
+    RoleCreatePageComponent,
   ],
   imports: [
     CommonModule,
@@ -37,8 +39,7 @@ import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
           {path: 'user/:id/edit', component: UserEditPageComponent},
           {path: 'user/:id/change-password', component: UserChangePasswordComponent},
           {path: 'roles', component: RolesPageComponent, pathMatch: 'full'},
-          //{path: 'user/:id/edit', component: UserEditPageComponent},
-          //{path: 'user/:id/change-password', component: UserChangePasswordComponent},
+          {path: 'role/create', component: RoleCreatePageComponent},
         ]
       }
     ]),
