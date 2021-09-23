@@ -14,7 +14,10 @@
       <li routerLinkActive="active">
         <a [routerLink]="['role', 'create']">Create a role</a>
       </li>
-
+      <li>
+        <a (click)="auth.logout()" routerLink="/">Logout</a>
+      </li>
+      
   </ul>
   </nav>
 <div class="container">

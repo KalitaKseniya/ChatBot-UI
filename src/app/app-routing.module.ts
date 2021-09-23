@@ -7,7 +7,7 @@ import { UsersPageComponent } from './users/users-page/users-page.component';
 
 const routes: Routes = [
   {
-    path: '', component: LoginPageComponent
+    path: '', component: LoginPageComponent, pathMatch: 'full'
   },
   {
     path: 'admin', loadChildren: () => import('src/app/admin/admin.module').then(m => m.AdminModule)
