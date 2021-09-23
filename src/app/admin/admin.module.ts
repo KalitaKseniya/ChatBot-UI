@@ -12,6 +12,7 @@ import { UserEditPageComponent } from '../users/user-edit-page/user-edit-page/us
 import { UserChangePasswordComponent } from '../users/user-change-password/user-change-password.component';
 import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
 import { RoleCreatePageComponent } from '../roles/role-create-page/role-create-page.component';
+import { RoleEditPageComponent } from '../roles/role-edit-page/role-edit-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RoleCreatePageComponent } from '../roles/role-create-page/role-create-p
     UserChangePasswordComponent,
     RolesPageComponent,
     RoleCreatePageComponent,
+    RoleEditPageComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { RoleCreatePageComponent } from '../roles/role-create-page/role-create-p
           {path: 'user/:id/change-password', component: UserChangePasswordComponent},
           {path: 'roles', component: RolesPageComponent, pathMatch: 'full'},
           {path: 'role/create', component: RoleCreatePageComponent},
+          {path: 'role/:id/edit-permissions', component: RoleEditPageComponent},
         ]
       }
     ]),

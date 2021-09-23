@@ -33,3 +33,9 @@ export interface RoleForCreationDto{
 export interface PermissionForRole{
   name: string
 }
+
+export interface Permission{
+  id: number,
+  name: string,
+  description: string
+}

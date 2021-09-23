@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PermissionForRole, Role, RoleForCreationDto } from '../interfaces';
+import { Permission, PermissionForRole, Role, RoleForCreationDto } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +30,8 @@ export class RolesService {
     return this.http.get<Role>(`${environment.serverUrl}/api/admin/roles/name?name=${name}`)
   }
 
-  getRolePermissions(roleName: string) : Observable<string[]>{
-    return this.http.get<[]>(`${environment.serverUrl}/api/admin/roles/${roleName}/permissions`)
+  getRolePermissions(roleName: string) : Observable<Permission[]>{
+    return this.http.get<Permission[]>(`${environment.serverUrl}/api/admin/roles/${roleName}/permissions`)
   }
   
   updateRolePermissions(roleName: string, permissions: PermissionForRole[]): Observable<void>{
