@@ -1,39 +1,33 @@
 <div *ngIf="role && permissions && rolePermissions; else loading_block">
-    
-    <form
-    [formGroup]="form"
-    class="card"
-    (ngSubmit)="submit()"
->
-<div class="header">
-    <button routerLink="/admin/roles" class="btn btn-link">
+  <form [formGroup]="form" class="card" (ngSubmit)="submit()">
+    <div class="header">
+      <button routerLink="/admin/roles" class="btn btn-link">
         Back to all roles
-    </button>
-    <h2>Edit role permissions</h2>
-</div>
-<div class="form-control">
-    <label>Name</label>
-    <input class="form-control" type="text" [value]="role.name" readonly>
-</div>
-<div class="form-control">
-    <label>Permissions</label>
-    <div *ngFor="let perm of permissions">
-        <input type="checkbox" 
-            [checked]="contains(rolePermissions, perm)"
-            (change)="change(perm)"
-        > {{perm.description}}
-        
+      </button>
+      <h2>Edit role permissions</h2>
     </div>
-</div>
+    <div class="form-control">
+      <label>Name</label>
+      <input class="form-control" type="text" [value]="role.name" readonly />
+    </div>
+    <div class="form-control">
+      <label>Permissions</label>
+      <div *ngFor="let perm of permissions">
+        <input
+          type="checkbox"
+          [checked]="contains(rolePermissions, perm)"
+          (change)="change(perm)"
+        />
+        {{ perm.description }}
+      </div>
+    </div>
 
-
-<button class="btn btn-primary" type="submit" 
-    [disabled]="submitted">
-    Save
-</button>
-</form>
+    <button class="btn btn-primary" type="submit" [disabled]="submitted">
+      Save
+    </button>
+  </form>
 </div>
 
 <ng-template #loading_block>
-    <p>Loading...</p>
+  <p>Loading...</p>
 </ng-template>

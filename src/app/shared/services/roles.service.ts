@@ -33,7 +33,7 @@ export class RolesService {
   getRolePermissions(roleName: string) : Observable<Permission[]>{
     return this.http.get<Permission[]>(`${environment.serverUrl}/api/admin/roles/${roleName}/permissions`)
   }
-  
+
   updateRolePermissions(roleName: string, permissions: PermissionForRole[]): Observable<void>{
     return this.http.put<void>(`${environment.serverUrl}/api/admin/roles/${roleName}/permissions`, permissions)
   }
@@ -41,8 +41,5 @@ export class RolesService {
   addRolePermissions(roleName: string, permissions: PermissionForRole[]): Observable<void>{
     return this.http.post<void>(`${environment.serverUrl}/api/admin/roles/${roleName}/permissions`, permissions)
   }
-
-
-
 
 }

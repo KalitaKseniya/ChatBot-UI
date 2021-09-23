@@ -1,25 +1,24 @@
 <nav class="navbar bg-primary">
   <h3>Admin</h3>
   <!-- <ul> *ngIf="auth.isAuthenticated()"> -->
-    <ul>
-      <li routerLinkActive="active">
-          <a [routerLink]="['users']">Users</a>
-      </li>
-      <li routerLinkActive="active">
-        <a [routerLink]="['user', 'create']">Create a user</a>
-      </li>
-      <li routerLinkActive="active">
-        <a [routerLink]="['roles']">Roles</a>
-      </li>
-      <li routerLinkActive="active">
-        <a [routerLink]="['role', 'create']">Create a role</a>
-      </li>
-      <li>
-        <a (click)="auth.logout()" routerLink="/">Logout</a>
-      </li>
-      
+  <ul>
+    <li routerLinkActive="active">
+      <a [routerLink]="['users']">Users</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['user', 'create']">Create a user</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['roles']">Roles</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['role', 'create']">Create a role</a>
+    </li>
+    <li>
+      <a (click)="auth.logout()" routerLink="/">Logout</a>
+    </li>
   </ul>
-  </nav>
+</nav>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

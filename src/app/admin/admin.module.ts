@@ -27,7 +27,7 @@ import { RoleEditPageComponent } from '../roles/role-edit-page/role-edit-page.co
     RoleCreatePageComponent,
     RoleEditPageComponent,
     ForbiddenPageComponent,
-    AlertComponent
+    AlertComponent,
   ],
   imports: [
     CommonModule,
@@ -36,23 +36,56 @@ import { RoleEditPageComponent } from '../roles/role-edit-page/role-edit-page.co
     SharedModule,
     RouterModule.forChild([
       {
-        path: '', component: AdminLayoutComponent, children: [
-          {path: '', redirectTo: '/', pathMatch: 'full'},
-          {path: 'user/create', component: UserCreatePageComponent, canActivate: [AuthGuard]},
-          {path: 'users', component: UsersPageComponent, canActivate: [AuthGuard]},
-          {path: 'user/:id/edit', component: UserEditPageComponent, canActivate: [AuthGuard]},
-          {path: 'user/:id/change-password', component: UserChangePasswordComponent, canActivate: [AuthGuard]},
-          {path: 'roles', component: RolesPageComponent, pathMatch: 'full', canActivate: [AuthGuard]},
-          {path: 'role/create', component: RoleCreatePageComponent, canActivate: [AuthGuard]},
-          {path: 'role/:id/edit-permissions', component: RoleEditPageComponent, canActivate: [AuthGuard]},
-          {path: 'forbidden', component: ForbiddenPageComponent, canActivate: [AuthGuard]},
-        ]
-      }
+        path: '',
+        component: AdminLayoutComponent,
+        children: [
+          { path: '', redirectTo: '/', pathMatch: 'full' },
+          {
+            path: 'user/create',
+            component: UserCreatePageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'users',
+            component: UsersPageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'user/:id/edit',
+            component: UserEditPageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'user/:id/change-password',
+            component: UserChangePasswordComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'roles',
+            component: RolesPageComponent,
+            pathMatch: 'full',
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'role/create',
+            component: RoleCreatePageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'role/:id/edit-permissions',
+            component: RoleEditPageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'forbidden',
+            component: ForbiddenPageComponent,
+            canActivate: [AuthGuard],
+          },
+        ],
+      },
     ]),
-     NgMultiSelectDropDownModule.forRoot(),
-    ],
-  exports: [
-    RouterModule
-  ]
+    NgMultiSelectDropDownModule.forRoot(),
+  ],
+  exports: [RouterModule],
 })
-export class AdminModule { }
+export class AdminModule {}

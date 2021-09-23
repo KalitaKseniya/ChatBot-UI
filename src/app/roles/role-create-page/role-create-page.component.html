@@ -1,21 +1,22 @@
-<form
-    class="card"
-    [formGroup]="form"
-    (ngSubmit)="submit()"
->
-    <div class="header">
-        <button routerLink="/admin/roles" class="btn btn-link">
-            Back to all roles
-        </button>
-        <h2>Create a role</h2>
-    </div>
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="header">
+    <button routerLink="/admin/roles" class="btn btn-link">
+      Back to all roles
+    </button>
+    <h2>Create a role</h2>
+  </div>
 
-    <div class="form-control">
-      <label>Name</label>
-      <input class="form-control" type="text" formControlName="name">
-      <div class="validation" *ngIf="form.get('name').touched && form.get('name').invalid">
-          <small *ngIf="form.get('name').errors.required">name is a required field</small>
-      </div>
+  <div class="form-control">
+    <label>Name</label>
+    <input class="form-control" type="text" formControlName="name" />
+    <div
+      class="validation"
+      *ngIf="form.get('name').touched && form.get('name').invalid"
+    >
+      <small *ngIf="form.get('name').errors.required"
+        >Name is a required field</small
+      >
+    </div>
   </div>
   <div class="form-control">
     <label>Permissions</label>
@@ -23,12 +24,15 @@
       [settings]="dropdownSettings"
       [data]="dropdownList"
       [(ngModel)]="selectedItems"
-      [ngModelOptions]="{standalone: true}"
+      [ngModelOptions]="{ standalone: true }"
     >
     </ng-multiselect-dropdown>
-    </div>
-    <button class="btn btn-primary" type="submit" [disabled]="form.invalid || submitted">
-        Save
-    </button>
+  </div>
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="form.invalid || submitted"
+  >
+    Save
+  </button>
 </form>
-

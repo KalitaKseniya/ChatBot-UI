@@ -47,7 +47,6 @@ export interface UserForAuthenticationDto{
   password: string
 }
 
-
 export interface ServerAuthResponse{
   minutesExpires: number,
   roles: any,

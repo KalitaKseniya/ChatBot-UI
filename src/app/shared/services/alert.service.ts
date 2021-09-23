@@ -1,29 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-export interface Alert{
-  type: string
-  text: string
+export interface Alert {
+  type: string;
+  text: string;
 }
 
-export type AlertType = 'success' | 'warning' | 'danger'
+export type AlertType = 'success' | 'warning' | 'danger';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AlertService {
+  public alert$ = new Subject<Alert>();
 
-  public alert$ = new Subject<Alert>()
-
-  success(text: string){
-    this.alert$.next({type: 'success', text})
+  success(text: string) {
+    this.alert$.next({ type: 'success', text });
   }
 
-  danger(text: string){
-    this.alert$.next({type: 'danger', text})
+  danger(text: string) {
+    this.alert$.next({ type: 'danger', text });
   }
 
-  warning(text: string){
-    this.alert$.next({type: 'warning', text})
+  warning(text: string) {
+    this.alert$.next({ type: 'warning', text });
   }
 }

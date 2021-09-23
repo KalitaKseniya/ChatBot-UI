@@ -1,44 +1,52 @@
 <div *ngIf="user && form && loading">
-<form
-    class="card"
-    [formGroup]="form"
-    (ngSubmit)="submit()"
->
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <div class="header">
-        <button routerLink="/admin/users" class="btn btn-link">
-            Back to all users
-        </button>
-        <h2>Edit a user</h2>
+      <button routerLink="/admin/users" class="btn btn-link">
+        Back to all users
+      </button>
+      <h2>Edit a user</h2>
     </div>
     <div class="form-control">
-        <label>Email</label>
-        <input class="form-control" type="text" formControlName="email">
-        <div class="validation" *ngIf="form.get('email').touched && form.get('email').invalid">
-          <small *ngIf="form.get('email').errors.email">Invalid email</small>
-          <small *ngIf="form.get('email').errors.required">Email is a required field</small>
+      <label>Email</label>
+      <input class="form-control" type="text" formControlName="email" />
+      <div
+        class="validation"
+        *ngIf="form.get('email').touched && form.get('email').invalid"
+      >
+        <small *ngIf="form.get('email').errors.email">Invalid email</small>
+        <small *ngIf="form.get('email').errors.required"
+          >Email is a required field</small
+        >
       </div>
     </div>
     <div class="form-control">
       <label>Username</label>
-      <input class="form-control" type="text" formControlName="username">
-      <div class="validation" *ngIf="form.get('username').touched && form.get('username').invalid">
-          <small *ngIf="form.get('username').errors.required">Username is a required field</small>
+      <input class="form-control" type="text" formControlName="username" />
+      <div
+        class="validation"
+        *ngIf="form.get('username').touched && form.get('username').invalid"
+      >
+        <small *ngIf="form.get('username').errors.required"
+          >Username is a required field</small
+        >
       </div>
-  </div>
-  <div class="form-control">
-    <label>Roles</label>
-    <ng-multiselect-dropdown
-      [settings]="dropdownSettings"
-      [data]="dropdownList"
-      [(ngModel)]="selectedItems"
-      [ngModelOptions]="{standalone: true}"
+    </div>
+    <div class="form-control">
+      <label>Roles</label>
+      <ng-multiselect-dropdown
+        [settings]="dropdownSettings"
+        [data]="dropdownList"
+        [(ngModel)]="selectedItems"
+        [ngModelOptions]="{ standalone: true }"
+      >
+      </ng-multiselect-dropdown>
+    </div>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="form.invalid || submitted"
     >
-  </ng-multiselect-dropdown>
-
-  </div>
-    <button class="btn btn-primary" type="submit" [disabled]="form.invalid || submitted">
-        Update
+      Update
     </button>
-</form>
-
+  </form>
 </div>
