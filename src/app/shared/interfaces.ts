@@ -29,3 +29,7 @@ export interface PasswordChangeDto{
 export interface RoleForCreationDto{
   name: string
 }
+
+export interface PermissionForRole{
+  name: string
+}

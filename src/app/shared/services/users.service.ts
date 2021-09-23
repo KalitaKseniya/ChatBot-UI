@@ -39,6 +39,9 @@ export class UsersService {
     return this.http.put<any>(`${environment.serverUrl}/api/admin/users/${id}/password-change`, passwords)
   }
 
+  updateUserRoles(id: string, roles: string[]): Observable<void>{
+    return this.http.put<void>(`${environment.serverUrl}/api/admin/users/${id}/roles`, roles)
+  }
 
 
 }
