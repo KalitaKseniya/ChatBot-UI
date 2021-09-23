@@ -21,6 +21,7 @@ export class UserEditPageComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings: IDropdownSettings = {};
+  loading = false
 
   constructor(private usersService: UsersService,
               private router: Router,
@@ -30,7 +31,8 @@ export class UserEditPageComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-      this.route.params.pipe(switchMap((params: Params) => {
+    this.loading = true
+    this.route.params.pipe(switchMap((params: Params) => {
         console.log("id=",params['id'])
         return this.usersService.getUserById(params['id'])
       })).
@@ -44,7 +46,7 @@ export class UserEditPageComponent implements OnInit {
         })
         this.dropdownSettings = {
           singleSelection: false,
-          idField: 'id',
+          idField: 'name',
           textField: 'name',
           selectAllText: 'Select All',
           unSelectAllText: 'UnSelect All',
@@ -62,15 +64,11 @@ export class UserEditPageComponent implements OnInit {
       return
     }
     this.submitted = true
-    let selectedRoles = []
-    if(this.selectedItems.length != 0){
-      for(let i = 0; i < this.selectedItems.length; i++){
-        selectedRoles.push(this.selectedItems[i].name)
-      }
-    }
+
     const user: UserForUpdateDto = {
       userName: this.form.get('username').value,
-      email: this.form.get('email').value
+      email: this.form.get('email').value,
+      roles: this.selectedItems.map(r => r.name)
     }
 
     console.log(user)
@@ -98,6 +96,8 @@ export class UserEditPageComponent implements OnInit {
   loadUserRoles(){
     this.usersService.getUserRoles(this.user.id).subscribe((roles: Role[]) => {
       this.selectedItems = roles
+      this.loading = true
+      console.log(this.selectedItems)
     })
   }
 }

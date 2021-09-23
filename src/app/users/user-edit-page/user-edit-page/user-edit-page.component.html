@@ -1,4 +1,4 @@
-<div *ngIf="user && form">
+<div *ngIf="user && form && loading">
 <form
     class="card"
     [formGroup]="form"
@@ -28,7 +28,6 @@
   <div class="form-control">
     <label>Roles</label>
     <ng-multiselect-dropdown
-      [disabled]="true"
       [settings]="dropdownSettings"
       [data]="dropdownList"
       [(ngModel)]="selectedItems"

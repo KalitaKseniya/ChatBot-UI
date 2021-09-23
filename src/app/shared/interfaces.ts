@@ -13,7 +13,8 @@ export interface UserForCreationDto{
 
 export interface UserForUpdateDto{
   email: string,
-  userName: string
+  userName: string,
+  roles: string[]
 }
 
 export interface Role{
@@ -27,7 +28,8 @@ export interface PasswordChangeDto{
 }
 
 export interface RoleForCreationDto{
-  name: string
+  name: string,
+  permissions: Permission[]
 }
 
 export interface PermissionForRole{

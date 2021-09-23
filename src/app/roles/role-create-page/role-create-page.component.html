@@ -17,7 +17,16 @@
           <small *ngIf="form.get('name').errors.required">name is a required field</small>
       </div>
   </div>
-
+  <div class="form-control">
+    <label>Permissions</label>
+    <ng-multiselect-dropdown
+      [settings]="dropdownSettings"
+      [data]="dropdownList"
+      [(ngModel)]="selectedItems"
+      [ngModelOptions]="{standalone: true}"
+    >
+    </ng-multiselect-dropdown>
+    </div>
     <button class="btn btn-primary" type="submit" [disabled]="form.invalid || submitted">
         Save
     </button>
