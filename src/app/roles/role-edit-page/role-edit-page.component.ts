@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { Permission, Role, RoleForCreationDto } from 'src/app/shared/interfaces';
 import { RolesService } from 'src/app/shared/services/roles.service';
 import { of } from 'rxjs';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-role-edit-page',
@@ -26,7 +27,8 @@ export class RoleEditPageComponent implements OnInit {
   constructor(private router: Router,
               private rolesService: RolesService,
               private route: ActivatedRoute,
-              private permService: PermissionsService
+              private permService: PermissionsService,
+              private alert: AlertService
               ) { }
 
   ngOnInit(): void {
@@ -51,6 +53,7 @@ export class RoleEditPageComponent implements OnInit {
       
       this.submitted = false
       window.location.reload()
+      this.alert.success('Permissions has been updated')
       //this.router.navigate(['admin', 'roles'])
     })
   }

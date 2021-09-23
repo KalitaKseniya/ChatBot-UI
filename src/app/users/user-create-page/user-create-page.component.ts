@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Role, User, UserForCreationDto } from 'src/app/shared/interfaces';
+import { AlertService } from 'src/app/shared/services/alert.service';
 import { RolesService } from 'src/app/shared/services/roles.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 
@@ -21,7 +22,8 @@ export class UserCreatePageComponent implements OnInit {
 
   constructor(private usersService: UsersService,
               private router: Router,
-              private rolesService: RolesService
+              private rolesService: RolesService,
+              private alert: AlertService
               ) { }
 
   ngOnInit(): void {
@@ -66,6 +68,7 @@ export class UserCreatePageComponent implements OnInit {
        () => { this.submitted = false
         this.form.reset()
         this.router.navigate(['admin', 'users'])
+        this.alert.success("User has been created")
       },
        (error) => {
          console.log('Error when creating ', error)

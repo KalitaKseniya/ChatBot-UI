@@ -1,3 +1,4 @@
+import { AlertService } from './../../shared/services/alert.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +16,8 @@ export class RoleCreatePageComponent implements OnInit {
   form: FormGroup
 
   constructor(private router: Router,
-              private rolesService: RolesService
+              private rolesService: RolesService,
+              private alert: AlertService
               ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class RoleCreatePageComponent implements OnInit {
        () => { this.submitted = false
         this.form.reset()
         this.router.navigate(['admin', 'roles'])
+        this.alert.success('Role has been created')
       },
        (error) => {
          console.log('Error when creating ', error)

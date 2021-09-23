@@ -1,3 +1,4 @@
+import { AlertService } from './../../shared/services/alert.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Role } from 'src/app/shared/interfaces';
@@ -14,7 +15,8 @@ export class RolesPageComponent implements OnInit, OnDestroy {
   gSub: Subscription
   dSub: Subscription
 
-  constructor(private rolesService: RolesService) { }
+  constructor(private rolesService: RolesService,
+              private alert: AlertService) { }
 
   ngOnInit(): void {
     this.gSub = this.rolesService.getRoles().subscribe((roles: Role[]) => {
@@ -26,6 +28,7 @@ export class RolesPageComponent implements OnInit, OnDestroy {
   deleteRole(id: string){
     this.dSub = this.rolesService.deleteRole(id).subscribe(() => {
       this.roles = this.roles.filter(r => r.id !== id)
+      this.alert.danger('Role has been deleted')
     },
     (error) => console.log('Error deleting role', error))
   }

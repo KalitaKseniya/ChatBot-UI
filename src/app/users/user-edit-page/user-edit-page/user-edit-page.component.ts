@@ -6,6 +6,7 @@ import { Role, User, UserForUpdateDto } from 'src/app/shared/interfaces';
 import { RolesService } from 'src/app/shared/services/roles.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { switchMap } from 'rxjs/operators';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-user-edit-page',
@@ -24,7 +25,8 @@ export class UserEditPageComponent implements OnInit {
   constructor(private usersService: UsersService,
               private router: Router,
               private rolesService: RolesService,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private alert: AlertService
               ) { }
 
   ngOnInit(): void {
@@ -76,6 +78,7 @@ export class UserEditPageComponent implements OnInit {
        () => { this.submitted = false
         this.form.reset()
         this.router.navigate(['admin', 'users'])
+        this.alert.success("User has been updated")
       },
        (error) => {
          console.log('Error when updating ', error)
