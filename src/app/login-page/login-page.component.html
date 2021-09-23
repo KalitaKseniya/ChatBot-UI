@@ -1,1 +1,54 @@
-<p>login-page works!</p>
+<form class="card"
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+>
+    <h2>Login admin panel</h2>
+    <div class="alert alert-danger" *ngIf="wrongCredentials">
+        Wrong username, password or there is no such user in the database
+    </div>
+    <div class="alert alert-danger" *ngIf="message">
+        {{message}}
+    </div>
+
+    <div class="form-control">
+        <label>Username</label>
+        <input type="text" formControlName="username">
+        <div
+            class="validation"
+            *ngIf="form.get('username').touched && form.get('username').invalid"
+        >
+            <small
+                *ngIf="form.get('username').errors.required"
+            >
+                Username is required
+            </small>
+        </div>
+    </div>
+    <div class="form-control">
+        <label>Password</label>
+        <input type="password" formControlName="password">
+        <div
+            class="validation"
+            *ngIf="form.get('password').touched && form.get('password').invalid"class="validation"
+        >
+            <small
+                *ngIf="form.get('password').errors.required"
+            >
+                Password is required
+            </small>
+            <small
+                *ngIf="form.get('password').errors.minlength"
+            >
+                Password length must be at least {{form.get('password').errors.minlength.requiredLength}}.
+                Now - {{form.get('password').errors.minlength.actualLength}}.
+            </small>
+        </div>
+    </div>
+
+    <button
+        type="submit"
+        class="btn btn-dark"
+        [disabled]="form.invalid || submitted"
+    > Sign in
+    </button>
+</form>

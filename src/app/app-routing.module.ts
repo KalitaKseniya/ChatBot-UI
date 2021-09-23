@@ -1,3 +1,4 @@
+import { AuthGuard } from './shared/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -6,7 +7,7 @@ import { UsersPageComponent } from './users/users-page/users-page.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'admin', pathMatch: 'full'
+    path: '', component: LoginPageComponent
   },
   {
     path: 'admin', loadChildren: () => import('src/app/admin/admin.module').then(m => m.AdminModule)
@@ -15,6 +16,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
