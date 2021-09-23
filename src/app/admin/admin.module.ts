@@ -1,3 +1,4 @@
+import { AlertComponent } from './../shared/components/alert/alert.component';
 import { ForbiddenPageComponent } from './../forbidden-page/forbidden-page.component';
 import { AuthGuard } from './../shared/auth.guard';
 import { NgModule } from '@angular/core';
@@ -25,7 +26,8 @@ import { RoleEditPageComponent } from '../roles/role-edit-page/role-edit-page.co
     RolesPageComponent,
     RoleCreatePageComponent,
     RoleEditPageComponent,
-    ForbiddenPageComponent
+    ForbiddenPageComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
