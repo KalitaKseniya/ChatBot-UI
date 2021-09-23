@@ -39,3 +39,15 @@ export interface Permission{
   name: string,
   description: string
 }
+
+export interface UserForAuthenticationDto{
+  username: string
+  password: string
+}
+
+
+export interface ServerAuthResponse{
+  minutesExpires: number,
+  roles: any,
+  token: string
+}
