@@ -1,0 +1,31 @@
+<div *ngIf="user && form && loading">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="header">
+        <button routerLink="/admin/users" class="btn btn-link">
+          Back to all users
+        </button>
+        <h2>My account</h2>
+      </div>
+      <div class="form-control">
+        <label>Email</label>
+        <input class="form-control" type="text" formControlName="email" readonly />
+      </div>
+      <div class="form-control">
+        <label>Username</label>
+        <input class="form-control" type="text" formControlName="username" readonly/>
+      </div>
+      <div class="form-control">
+        <label>Roles</label>
+        <div *ngFor="let role of roles">
+          <input
+            type="checkbox"
+            [checked]="true"
+            readonly
+          />
+          {{ role }}
+        </div>
+      </div>
+     
+    </form>
+  </div>
+  

@@ -15,6 +15,7 @@ export class AlertService {
   public alert$ = new Subject<Alert>();
 
   success(text: string) {
+    console.log('ALERT')
     this.alert$.next({ type: 'success', text });
   }
 

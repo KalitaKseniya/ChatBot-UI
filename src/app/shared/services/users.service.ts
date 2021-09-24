@@ -43,4 +43,12 @@ export class UsersService {
     return this.http.put<void>(`${environment.serverUrl}/api/admin/users/${id}/roles`, roles)
   }
 
+  getCurrentUser(): Observable<User>{
+    return this.http.get<User>(`${environment.serverUrl}/api/admin/users/account`)
+  }
+
+  getCurrentUserRoles(): Observable<Role[]>{
+    return this.http.get<Role[]>(`${environment.serverUrl}/api/admin/users/account/roles`)
+  }
+
 }

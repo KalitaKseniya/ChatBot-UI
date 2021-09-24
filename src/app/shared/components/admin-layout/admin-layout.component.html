@@ -1,3 +1,4 @@
+<app-alert></app-alert>
 <nav class="navbar bg-primary">
   <h3>Admin</h3>
   <!-- <ul> *ngIf="auth.isAuthenticated()"> -->
@@ -19,6 +20,9 @@
     </li>
     <li routerLinkActive="active">
       <a [routerLink]="['role', 'create']">Create a role</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['account']"><i>My account</i></a>
     </li>
     <li>
       <a (click)="auth.logout()" routerLink="/">Logout</a>

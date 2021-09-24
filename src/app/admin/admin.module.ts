@@ -1,3 +1,4 @@
+import { AccountPageComponent } from './../account-page/account-page.component';
 import { AlertComponent } from './../shared/components/alert/alert.component';
 import { ForbiddenPageComponent } from './../forbidden-page/forbidden-page.component';
 import { AuthGuard } from './../shared/auth.guard';
@@ -34,6 +35,7 @@ import { ChatCreatePageComponent } from '../chats/chat-create-page/chat-create-p
     ChatsPageComponent,
     ChatEditPageComponent,
     ChatCreatePageComponent,
+    AccountPageComponent,
   ],
   imports: [
     CommonModule,
@@ -101,6 +103,11 @@ import { ChatCreatePageComponent } from '../chats/chat-create-page/chat-create-p
           {
             path: 'chat/:id/edit',
             component: ChatEditPageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'account',
+            component: AccountPageComponent,
             canActivate: [AuthGuard],
           },
         ],
