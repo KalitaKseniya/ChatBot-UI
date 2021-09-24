@@ -1,1 +1,37 @@
-<p>chat-edit-page works!</p>
+<div *ngIf="chat; else loading_block">
+    <form 
+        class="card" 
+        [formGroup]="form" 
+        (ngSubmit)="submit()"
+    >
+        <div class="header">
+            <button routerLink="/admin/chats" class="btn btn-link">
+                Back to all chats
+            </button>
+            <h2>Edit a chat</h2>
+        </div>
+        <div class="form-control">
+            <label>User request</label>
+            <input class="form-control" type="text" formControlName="userRequest">
+            <div class="validation" *ngIf="form.get('userRequest').touched && form.get('userRequest').invalid">
+                <small *ngIf="form.get('userRequest').errors.required">User request is a required field</small>
+            </div>
+        </div>
+        <div class="form-control">
+            <label>Bot response</label>
+            <input class="form-control" type="text" formControlName="botResponse">
+        </div>
+        <div class="form-control">
+            <label>Next Ids</label>
+            <input class="form-control" type="text" formControlName="nextIds">
+        </div>
+       
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid || submitted">
+            Update
+        </button>
+    </form>
+    </div>
+    
+    <ng-template #loading_block>
+        <p>Loading...</p>
+    </ng-template>

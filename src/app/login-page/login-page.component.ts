@@ -50,7 +50,7 @@ export class LoginPageComponent implements OnInit {
       () => {
         this.form.reset();
         if (this.auth.isAuthenticated()) {
-          this.router.navigate(['/admin', 'users']);
+          this.router.navigate(['/admin', 'chats']);
         }
         this.submitted = false;
         this.wrongCredentials = false;
