@@ -52,3 +52,16 @@ export interface ServerAuthResponse{
   roles: any,
   token: string
 }
+
+export interface Chat{
+  id: number,
+  userRequest: string,
+  botResponse: string,
+  nextIds: string
+}
+
+export interface ChatForManipulationDto{
+  userRequest: string,
+  botResponse: string,
+  nextIds: string
+}

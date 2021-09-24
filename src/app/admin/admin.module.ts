@@ -15,6 +15,9 @@ import { UserChangePasswordComponent } from '../users/user-change-password/user-
 import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
 import { RoleCreatePageComponent } from '../roles/role-create-page/role-create-page.component';
 import { RoleEditPageComponent } from '../roles/role-edit-page/role-edit-page.component';
+import { ChatsPageComponent } from '../chats/chats-page/chats-page.component';
+import { ChatEditPageComponent } from '../chats/chat-edit-page/chat-edit-page.component';
+import { ChatCreatePageComponent } from '../chats/chat-create-page/chat-create-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { RoleEditPageComponent } from '../roles/role-edit-page/role-edit-page.co
     RoleEditPageComponent,
     ForbiddenPageComponent,
     AlertComponent,
+    ChatsPageComponent,
+    ChatEditPageComponent,
+    ChatCreatePageComponent,
   ],
   imports: [
     CommonModule,
@@ -79,6 +85,22 @@ import { RoleEditPageComponent } from '../roles/role-edit-page/role-edit-page.co
           {
             path: 'forbidden',
             component: ForbiddenPageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'chats',
+            component: ChatsPageComponent,
+            pathMatch: 'full',
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'chat/create',
+            component: ChatCreatePageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'chat/:id/edit',
+            component: ChatEditPageComponent,
             canActivate: [AuthGuard],
           },
         ],

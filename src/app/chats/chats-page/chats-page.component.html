@@ -1,0 +1,32 @@
+<div *ngIf="chats.length; else loading">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>User request</th>
+      <th>Bot response</th>
+      <th>Next Ids</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let chat of chats">
+      <td>{{ chat.id }}</td>
+      <td>{{ chat.userRequest }}</td>
+      <td>{{ chat.botResponse }}</td>
+      <td>{{ chat.nextIds }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="deleteChat(chat.id)">
+          Delete
+        </button>
+        <button
+          class="btn btn-dark"
+          [routerLink]="['/admin', 'chat', chat.id, 'edit']"
+        >
+          Edit
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
